@@ -3,6 +3,8 @@ from slack_sdk import WebClient
 from datetime import datetime, timedelta
 import os
 from dotenv import load_dotenv
+import argparse
+import logging
 
 # Load environment variables
 load_dotenv()
@@ -88,10 +90,28 @@ def send_weekly_messages(token, channel_id, messages, weekday, hour, minute, tes
         time.sleep(60)  # Check every minute
 
 if __name__ == "__main__":
+    # Set up logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler('slack_signup.log'),
+            logging.StreamHandler()
+        ]
+    )
+    logger = logging.getLogger(__name__)
+
+    # Set up command line arguments
+    parser = argparse.ArgumentParser(description='Slack Sign-up Sheet Automation')
+    parser.add_argument('--test', action='store_true', help='Run in test mode')
+    args = parser.parse_args()
+
+    # Load environment variables
     USER_TOKEN = os.environ.get('SLACK_USER_TOKEN')
     CHANNEL_ID = os.environ.get('CHANNEL_ID')
     
     if not USER_TOKEN or not CHANNEL_ID:
+        logger.error("Please set SLACK_USER_TOKEN and CHANNEL_ID in .env file")
         raise ValueError("Please set SLACK_USER_TOKEN and CHANNEL_ID in .env file")
     
     # Test messages
@@ -104,7 +124,7 @@ if __name__ == "__main__":
     
     # Regular messages
     regular_messages = [
-        "📅 Thursday and Friday Sign-up Sheet",
+        "📅 <!channel> Thursday and Friday Sign-up Sheet",
         "🗓️ *Thursday Schedule:*\n"
         "• 10:30 - Setup @bechtel\n"
         "• 11:00-11:30\n"
@@ -126,11 +146,8 @@ if __name__ == "__main__":
         "Please react with ✅ to sign up for your preferred time slots!"
     ]
     
-    # Ask user if they want to run in test mode
-    mode = input("Run in test mode? (y/n): ").lower()
-    
-    if mode == 'y':
-        print("Running in test mode - messages will be sent immediately")
+    if args.test:
+        logger.info("Running in test mode - messages will be sent immediately")
         send_weekly_messages(
             token=USER_TOKEN,
             channel_id=CHANNEL_ID,
@@ -141,7 +158,7 @@ if __name__ == "__main__":
             test_mode=True
         )
     else:
-        print("Running in scheduled mode - messages will be sent every Monday at 10:00 AM")
+        logger.info("Running in scheduled mode - messages will be sent every Monday at 10:00 AM")
         send_weekly_messages(
             token=USER_TOKEN,
             channel_id=CHANNEL_ID,
