@@ -32,11 +32,11 @@ def send_weekly_messages(token, channel_id, messages, weekday, hour, minute, tes
         days_ahead = weekday - now.weekday()
         
         # If we've already passed the target time today, start counting from tomorrow
-        if now.weekday() == weekday and now >= target_time:
-            days_ahead += 7
-        # If we've passed the target weekday this week, wait for next week
-        elif days_ahead <= 0:
-            days_ahead += 7
+        # if now.weekday() == weekday and now >= target_time:
+        #     days_ahead += 7
+        # # If we've passed the target weekday this week, wait for next week
+        # elif days_ahead <= 0:
+        #     days_ahead += 7
             
         next_run = target_time + timedelta(days=days_ahead)
         print(f"Current time: {now}")
@@ -116,32 +116,33 @@ if __name__ == "__main__":
     
     # Test messages
     test_messages = [
-        "🧪 Weekly Update Test (Parent Message)",
+        "🧪 <!channel> Weekly Update Test (Parent Message)",
         "🧪 First reply in thread",
         "🧪 Second reply in thread",
+        "• 11:00-11:30",
         "🧪 Final reply in thread"
     ]
     
     # Regular messages
     regular_messages = [
         "📅 <!channel> Thursday and Friday Sign-up Sheet",
-        "🗓️ *Thursday Schedule:*\n"
-        "• 10:30 - Setup @bechtel\n"
-        "• 11:00-11:30\n"
-        "• 11:30-12:00\n"
-        "• 12:00-12:30\n"
-        "• 12:30-1:00\n"
-        "• 1:00-1:30\n"
-        "• 1:30-2:00\n"
+        "🗓️ *Thursday Schedule:*",
+        "• 10:30 - Setup @bechtel",
+        "• 11:00-11:30",
+        "• 11:30-12:00", 
+        "• 12:00-12:30",
+        "• 12:30-1:00",
+        "• 1:00-1:30",
+        "• 1:30-2:00",
         "• 2:00 - Clean up",
-        "🗓️ *Friday Schedule:*\n"
-        "• 10:30 - Setup @bechtel\n"
-        "• 11:00-11:30\n"
-        "• 11:30-12:00\n"
-        "• 12:00-12:30\n"
-        "• 12:30-1:00\n"
-        "• 1:00-1:30\n"
-        "• 1:30-2:00\n"
+        "🗓️ *Friday Schedule:*",
+        "• 10:30 - Setup @bechtel",
+        "• 11:00-11:30",
+        "• 11:30-12:00",
+        "• 12:00-12:30", 
+        "• 12:30-1:00",
+        "• 1:00-1:30",
+        "• 1:30-2:00",
         "• 2:00 - Clean up",
         "Please react with ✅ to sign up for your preferred time slots!"
     ]
@@ -163,8 +164,8 @@ if __name__ == "__main__":
             token=USER_TOKEN,
             channel_id=CHANNEL_ID,
             messages=regular_messages,
-            weekday=0,  # Monday
-            hour=10,    # 10 AM
-            minute=0,   # 0 minutes
+            weekday=1,  # Monday
+            hour=21,    # 10 AM
+            minute=49,   # 0 minutes
             test_mode=False
         )
