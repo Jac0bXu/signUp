@@ -1,56 +1,45 @@
 # Slack Sign-up Sheet Automation
 
-A Python script that automatically posts weekly sign-up sheets to a Slack channel. Perfect for managing recurring events or schedules.
+An automated scheduling system designed for managing recurring time slots in Slack channels. Specifically built for:
+- Managing weekly volunteer schedules
+- Coordinating recurring team meetings
+- Organizing office hours or support slots
+- Handling regular resource booking
+- Automating attendance tracking
 
-## Features
+Features
+- Posts weekly schedule templates automatically
+- Customizable time slots for Thursday and Friday
+- Thread-based response system for organization
+- Emoji reaction-based sign-up system (✅)
+- Automatic setup and cleanup slot assignment
+- Persistent schedule tracking
+- User-friendly interface
 
-- Automated weekly posting
-- Threaded messages for better organization
-- Configurable scheduling
-- Test mode for verification
-- Detailed logging
-
-## Prerequisites
-
-- Python 3.6+
-- Slack workspace with admin privileges
-- Slack Bot Token with appropriate permissions
-
-## Installation
-
-1. Clone the repository:
-   git clone https://github.com/yourusername/signup.git
-   cd signup
-
-2. Install required dependencies:
+Setup
+1. Install required packages:
    pip install -r requirements.txt
 
-3. Create a .env file in the project root with your Slack credentials:
-   SLACK_USER_TOKEN=xoxb-your-token-here
-   CHANNEL_ID=C0123456789
+2. Create .env file with:
+   SLACK_USER_TOKEN=xoxb-your-token
+   CHANNEL_ID=your-channel-id
 
-## Slack Setup
+3. Configure schedule in slackSignUp.py:
+   - Default slots: 11:00-14:00 in 30-minute intervals
+   - Setup time: 10:30
+   - Cleanup time: 14:00
+   - Custom message formatting
+   - Schedule posting timing
 
-1. Create a Slack App at api.slack.com/apps
-2. Add the following OAuth scopes:
-   - chat:write
-   - channels:read
-3. Install the app to your workspace
-4. Copy the Bot User OAuth Token to your .env file
+Usage
+Run manually:
+python3 slackSignUp.py
 
-## Usage
+Run with test mode (posts test messages):
+python3 slackSignUp.py --test
 
-Running in Normal Mode:
-python slackSignUp.py
-
-Running in Test Mode:
-python slackSignUp.py --test
-
-Server Deployment:
-1. Make the script executable:
-   chmod +x slackSignUp.py
-
-2. Create a systemd service file /etc/systemd/system/slack-signup.service:
+Auto-start (using systemd):
+1. Create service file:
    [Unit]
    Description=Slack Sign-up Sheet Automation
    After=network.target
@@ -66,31 +55,24 @@ Server Deployment:
    [Install]
    WantedBy=multi-user.target
 
-3. Start and enable the service:
-   sudo systemctl start slack-signup
+2. Enable and start:
    sudo systemctl enable slack-signup
+   sudo systemctl start slack-signup
 
-## Customization
+Logging
+- Console output for immediate feedback
+- slack_signup.log file for historical tracking
+- Includes posting success/failure
+- Tracks user interactions
+- Records schedule changes
 
-You can modify the following in slackSignUp.py:
-- Message content in regular_messages list
-- Scheduling time (weekday, hour, minute)
-- Message formatting and emojis
+Schedule Format
+- Thursday and Friday schedules
+- 30-minute time slots
+- Dedicated setup/cleanup slots
+- Automatic @mentions for setup
+- Clear visual formatting
+- Emoji-based status indicators
 
-## Logging
-
-Logs are written to:
-- Console output
-- slack_signup.log file in the project directory
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a new Pull Request
+License
+MIT License
