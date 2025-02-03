@@ -32,11 +32,11 @@ def send_weekly_messages(token, channel_id, messages, weekday, hour, minute, tes
         days_ahead = weekday - now.weekday()
         
         # If we've already passed the target time today, start counting from tomorrow
-        if now.weekday() == weekday and now >= target_time:
-            days_ahead += 7
-        # If we've passed the target weekday this week, wait for next week
-        elif days_ahead <= 0:
-            days_ahead += 7
+        # if now.weekday() == weekday and now >= target_time:
+        #     days_ahead += 7
+        # # If we've passed the target weekday this week, wait for next week
+        # elif days_ahead <= 0:
+        #     days_ahead += 7
             
         next_run = target_time + timedelta(days=days_ahead)
         print(f"Current time: {now}")
@@ -116,9 +116,14 @@ if __name__ == "__main__":
     
     # Test messages
     test_messages = [
+<<<<<<< HEAD
         "🧪 Weekly Update Test (Parent Message)::::",
+=======
+        "🧪 <!channel> Weekly Update Test (Parent Message)",
+>>>>>>> 47e8daf5bf735f57864b3a099024eac4d0a701d4
         "🧪 First reply in thread",
         "🧪 Second reply in thread",
+        "• 11：00-11：30",
         "🧪 Final reply in thread"
     ]
     
@@ -128,7 +133,11 @@ if __name__ == "__main__":
         "🗓️ *Thursday Schedule:*",
         "• 10:30 - Setup @bechtel",
         "• 11:00-11:30",
+<<<<<<< HEAD
         "• 11:30-12:00",
+=======
+        "• 11:30-12:00", 
+>>>>>>> 47e8daf5bf735f57864b3a099024eac4d0a701d4
         "• 12:00-12:30",
         "• 12:30-1:00",
         "• 1:00-1:30",
@@ -138,7 +147,11 @@ if __name__ == "__main__":
         "• 10:30 - Setup @bechtel",
         "• 11:00-11:30",
         "• 11:30-12:00",
+<<<<<<< HEAD
         "• 12:00-12:30",
+=======
+        "• 12:00-12:30", 
+>>>>>>> 47e8daf5bf735f57864b3a099024eac4d0a701d4
         "• 12:30-1:00",
         "• 1:00-1:30",
         "• 1:30-2:00",
@@ -164,8 +177,14 @@ if __name__ == "__main__":
             token=USER_TOKEN,
             channel_id=CHANNEL_ID,
             messages=regular_messages,
+<<<<<<< HEAD
             weekday=0,  # Monday
             hour=20,    # 10 AM
             minute=1,   # 0 minutes
+=======
+            weekday=1,  # Monday
+            hour=21,    # 10 AM
+            minute=49,   # 0 minutes
+>>>>>>> 47e8daf5bf735f57864b3a099024eac4d0a701d4
             test_mode=False
         )
