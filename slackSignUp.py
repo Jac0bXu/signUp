@@ -119,7 +119,7 @@ if __name__ == "__main__":
         "🧪 <!channel> Weekly Update Test (Parent Message)",
         "🧪 First reply in thread",
         "🧪 Second reply in thread",
-        "• 11:00-11:30",
+        "• 11：00-11：30",
         "🧪 Final reply in thread"
     ]
     
