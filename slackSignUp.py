@@ -116,11 +116,7 @@ if __name__ == "__main__":
     
     # Test messages
     test_messages = [
-<<<<<<< HEAD
-        "🧪 Weekly Update Test (Parent Message)::::",
-=======
         "🧪 <!channel> Weekly Update Test (Parent Message)",
->>>>>>> 47e8daf5bf735f57864b3a099024eac4d0a701d4
         "🧪 First reply in thread",
         "🧪 Second reply in thread",
         "• 11：00-11：30",
@@ -133,11 +129,7 @@ if __name__ == "__main__":
         "🗓️ *Thursday Schedule:*",
         "• 10:30 - Setup @bechtel",
         "• 11:00-11:30",
-<<<<<<< HEAD
-        "• 11:30-12:00",
-=======
         "• 11:30-12:00", 
->>>>>>> 47e8daf5bf735f57864b3a099024eac4d0a701d4
         "• 12:00-12:30",
         "• 12:30-1:00",
         "• 1:00-1:30",
@@ -147,11 +139,7 @@ if __name__ == "__main__":
         "• 10:30 - Setup @bechtel",
         "• 11:00-11:30",
         "• 11:30-12:00",
-<<<<<<< HEAD
-        "• 12:00-12:30",
-=======
         "• 12:00-12:30", 
->>>>>>> 47e8daf5bf735f57864b3a099024eac4d0a701d4
         "• 12:30-1:00",
         "• 1:00-1:30",
         "• 1:30-2:00",
@@ -177,14 +165,8 @@ if __name__ == "__main__":
             token=USER_TOKEN,
             channel_id=CHANNEL_ID,
             messages=regular_messages,
-<<<<<<< HEAD
             weekday=0,  # Monday
             hour=20,    # 10 AM
             minute=1,   # 0 minutes
-=======
-            weekday=1,  # Monday
-            hour=21,    # 10 AM
-            minute=49,   # 0 minutes
->>>>>>> 47e8daf5bf735f57864b3a099024eac4d0a701d4
             test_mode=False
         )
