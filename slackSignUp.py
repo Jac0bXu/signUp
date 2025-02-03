@@ -116,7 +116,7 @@ if __name__ == "__main__":
     
     # Test messages
     test_messages = [
-        "🧪 Weekly Update Test (Parent Message)",
+        "🧪 Weekly Update Test (Parent Message)::::",
         "🧪 First reply in thread",
         "🧪 Second reply in thread",
         "🧪 Final reply in thread"
@@ -125,23 +125,23 @@ if __name__ == "__main__":
     # Regular messages
     regular_messages = [
         "📅 <!channel> Thursday and Friday Sign-up Sheet",
-        "🗓️ *Thursday Schedule:*\n"
-        "• 10:30 - Setup @bechtel\n"
-        "• 11:00-11:30\n"
-        "• 11:30-12:00\n"
-        "• 12:00-12:30\n"
-        "• 12:30-1:00\n"
-        "• 1:00-1:30\n"
-        "• 1:30-2:00\n"
+        "🗓️ *Thursday Schedule:*",
+        "• 10:30 - Setup @bechtel",
+        "• 11:00-11:30",
+        "• 11:30-12:00",
+        "• 12:00-12:30",
+        "• 12:30-1:00",
+        "• 1:00-1:30",
+        "• 1:30-2:00",
         "• 2:00 - Clean up",
-        "🗓️ *Friday Schedule:*\n"
-        "• 10:30 - Setup @bechtel\n"
-        "• 11:00-11:30\n"
-        "• 11:30-12:00\n"
-        "• 12:00-12:30\n"
-        "• 12:30-1:00\n"
-        "• 1:00-1:30\n"
-        "• 1:30-2:00\n"
+        "🗓️ *Friday Schedule:*",
+        "• 10:30 - Setup @bechtel",
+        "• 11:00-11:30",
+        "• 11:30-12:00",
+        "• 12:00-12:30",
+        "• 12:30-1:00",
+        "• 1:00-1:30",
+        "• 1:30-2:00",
         "• 2:00 - Clean up",
         "Please react with ✅ to sign up for your preferred time slots!"
     ]
@@ -153,6 +153,7 @@ if __name__ == "__main__":
             channel_id=CHANNEL_ID,
             messages=test_messages,
             weekday=0,  # Monday
+
             hour=10,    # 10 AM
             minute=0,   # 0 minutes
             test_mode=True
@@ -164,7 +165,7 @@ if __name__ == "__main__":
             channel_id=CHANNEL_ID,
             messages=regular_messages,
             weekday=0,  # Monday
-            hour=10,    # 10 AM
-            minute=0,   # 0 minutes
+            hour=20,    # 10 AM
+            minute=1,   # 0 minutes
             test_mode=False
         )
